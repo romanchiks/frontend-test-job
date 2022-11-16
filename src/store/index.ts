@@ -139,7 +139,12 @@ export default createStore({
     activateModal(state: State): void {
       state.modalState = true;
     },
-    updateList(state: State, direction: "next" | "back"): void {
+    updateList(state: State, direction: "next" | "back" | undefined): void {
+      if (!direction) {
+        state.currentList = 0;
+        return;
+      }
+
       if (direction === "next") {
         if (
           (state.currentList + 1) * state.ITEM_IN_LIST <

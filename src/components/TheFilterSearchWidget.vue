@@ -7,6 +7,7 @@
       @input="
         updateInputValue($event);
         searchUsers(searchString);
+        updateList();
       "
     >
       <img src="../assets/search-icon.svg" />
@@ -41,6 +42,7 @@ export default defineComponent({
     ...mapMutations({
       searchUsers: "searchUsers",
       clearFilters: "clearFilters",
+      updateList: "updateList",
     }),
     updateInputValue(event: any): void {
       this.$store.commit("updateSearchString", event.target.value);
